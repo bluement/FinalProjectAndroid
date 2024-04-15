@@ -1,0 +1,27 @@
+<!-- activity_daily_intake.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTdeeResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your TDEE: " />
+
+    <TextView
+        android:id="@+id/tvBmiResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your BMI: " />
+
+    <TextView
+        android:id="@+id/tvDailyIntake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Recommended Daily Intake: " />
+
+</LinearLayout>
