@@ -1,29 +1,53 @@
-<!-- activity_tdee_calculator.xml MIGHT HAVE ISSUES -->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <EditText
         android:id="@+id/etWeight"
         android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:hint="Enter Weight (kg)" />
-
-    <!-- Add more, g just cp le bmi mais on a pas tt pr faire le TDEE live -->
+        android:layout_height="wrap_content"
+        android:hint="Weight (kg)"
+        android:inputType="numberDecimal"
+        android:height="60dp"/>
 
     <EditText
         android:id="@+id/etHeight"
         android:layout_width="match_parent"
-        android:layout_height="91dp"
-        android:hint="Enter Height (cm)" />
+        android:layout_height="wrap_content"
+        android:hint="Height (cm)"
+        android:inputType="numberDecimal"
+        android:height="60dp"/>
+
+    <EditText
+        android:id="@+id/etAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Age"
+        android:inputType="number"
+        android:height="60dp"/>
+
+    <Spinner
+        android:id="@+id/spnGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/gender_options"
+        android:minHeight="48dp"/>
+
+    <Spinner
+        android:id="@+id/spnActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/activity_level"
+        android:minHeight="48dp"/>
 
     <Button
         android:id="@+id/btnCalculateTdee"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:text="Calculate TDEE" />
+        android:layout_height="wrap_content"
+        android:text="Calculate TDEE"
+        android:height="48dp"/>
 
 </LinearLayout>
