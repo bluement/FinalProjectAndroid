@@ -36,8 +36,8 @@ class TdeeCalculatorActivity : AppCompatActivity() {
         }
     }
 
-    private fun calculateBMR(gender: String, weight: Double, height: Double, age: Int): Double {
-        return if (gender == "Male") {
+    private fun calculateBMR(gendr: String, weight: Double, height: Double, age: Int): Double {
+        return if (gendr == "Male") {
             10 * weight + 6.25 * height - 5 * age + 5
         } else {
             10 * weight + 6.25 * height - 5 * age - 161
