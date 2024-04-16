@@ -1,33 +1,36 @@
 package com.example.finalprojectandroid
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class DailyIntakeActivity : AppCompatActivity() {
-
+    private lateinit var calculator: DailyIntakeCalculator
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_intake)
 
-        val tvTdeeResult = findViewById<TextView>(R.id.tvTdeeResult)
-        val tvBmiResult = findViewById<TextView>(R.id.tvBmiResult)
-        val tvDailyIntake = findViewById<TextView>(R.id.tvDailyIntake)
+        calculator = DailyIntakeCalculator()
 
-        val tdee = intent.getDoubleExtra("tdee", 0.0)
-        val bmi = intent.getDoubleExtra("bmi", 0.0)
+        val calculateButton = findViewById<Button>(R.id.calculateButton)
 
-        tvTdeeResult.text = "Your TDEE: $tdee"
-        tvBmiResult.text = "Your BMI: $bmi"
+        calculateButton.setOnClickListener {
+            val bmi = findViewById<EditText>(R.id.editTextBMI).text.toString().toDoubleOrNull() ?: 0.0
+            val tdee = findViewById<EditText>(R.id.editTextTDEE).text.toString().toDoubleOrNull() ?: 0.0
 
-        // Calculate daily intake recommendation based on TDEE and BMI
-        val dailyIntake = calculateDailyIntake(tdee, bmi)
-        tvDailyIntake.text = "Recommended Daily Intake: $dailyIntake kcal"
-    }
+            calculator.setBMI(bmi)
+            calculator.setTDEE(tdee)
 
-    private fun calculateDailyIntake(tdee: Double, bmi: Double): Int {
-        // Implement daily intake recommendation logic based on TDEE and BMI
-        // This is just a placeholder
-        return (tdee * 0.85).toInt() // Placeholder calculation (e.g., 85% of TDEE for weight loss)
+            val recommendedIntake = calculator.calculateRecommendedIntake()
+
+            val resultString = "Recommended intake:\n" +
+                    "Protein: ${recommendedIntake["Protein"]} grams\n" +
+                    "Fat: ${recommendedIntake["Fat"]} grams\n" +
+                    "Carbohydrates: ${recommendedIntake["Carbohydrates"]} grams"
+
+            findViewById<TextView>(R.id.resultTextView).text = resultString
+        }
     }
 }

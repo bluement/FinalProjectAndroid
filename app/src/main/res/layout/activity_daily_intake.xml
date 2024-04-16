@@ -5,23 +5,38 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvTdeeResult"
+
+    <EditText
+        android:id="@+id/editTextBMI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your TDEE: " />
+        android:hint="Enter BMI"
+        android:imeOptions="actionNext"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/editTextTDEE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter TDEE"
+        android:imeOptions="actionDone"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp" />
+
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:layout_marginTop="16dp"/>
 
     <TextView
-        android:id="@+id/tvBmiResult"
-        android:layout_width="match_parent"
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your BMI: " />
-
-    <TextView
-        android:id="@+id/tvDailyIntake"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Recommended Daily Intake: " />
+        android:text="Result will be shown here"
+        android:paddingTop="16dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 </LinearLayout>
