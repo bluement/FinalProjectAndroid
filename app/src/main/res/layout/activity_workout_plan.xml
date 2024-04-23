@@ -7,8 +7,14 @@
 
     <TextView
         android:id="@+id/textViewDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="299dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="96dp"
         android:text="Selected Date:" />
 
     <Spinner
@@ -16,7 +22,11 @@
         android:layout_width="381dp"
         android:layout_height="64dp"
         android:layout_below="@id/textViewDate"
-        android:layout_marginTop="29dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="45dp"
         android:entries="@array/workout_types" />
 
     <Button
@@ -24,7 +34,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/spinnerWorkoutType"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
         android:text="Save Workout" />
 
 </RelativeLayout>
