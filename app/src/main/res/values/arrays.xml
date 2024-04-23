@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/values/arrays.xml -->
+<resources>
+    <string-array name="workout_types">
+        <item>Upper Body</item>
+        <item>Lower Body</item>
+        <item>Core</item>
+    </string-array>
+</resources>

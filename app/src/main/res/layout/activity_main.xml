@@ -1,21 +1,45 @@
 <!-- activity_main.xml SOLVED,TOUCH ONLY FOR LAYOUT ISSUES -->
+<!-- activity_main.xml -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <Button
-        android:id="@+id/btnTdeeCalculator"
+    <CalendarView
+        android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calculate TDEE" />
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btnBmiCalculator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/calendarView"
+        android:text="BMI Calculator" />
+
+    <Button
+        android:id="@+id/btnTdeeCalculator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnBmiCalculator"
+        android:layout_marginTop="16dp"
+        android:text="TDEE Calculator" />
+
+    <Button
+        android:id="@+id/btnDailyIntake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/btnTdeeCalculator"
         android:layout_marginTop="16dp"
-        android:text="Calculate BMI" />
+        android:text="Daily Intake Calculator" />
+
+    <Button
+        android:id="@+id/btnWorkoutPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnDailyIntake"
+        android:layout_marginTop="16dp"
+        android:text="Create Workout Plan" />
 
 </RelativeLayout>

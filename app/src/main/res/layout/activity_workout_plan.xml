@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_workout_plan.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selected Date:" />
+
+    <Spinner
+        android:id="@+id/spinnerWorkoutType"
+        android:layout_width="381dp"
+        android:layout_height="64dp"
+        android:layout_below="@id/textViewDate"
+        android:layout_marginTop="29dp"
+        android:entries="@array/workout_types" />
+
+    <Button
+        android:id="@+id/btnSaveWorkout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerWorkoutType"
+        android:layout_marginTop="64dp"
+        android:text="Save Workout" />
+
+</RelativeLayout>
