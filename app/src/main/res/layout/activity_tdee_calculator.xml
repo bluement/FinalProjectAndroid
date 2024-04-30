@@ -50,4 +50,14 @@
         android:text="Calculate TDEE"
         android:height="48dp"/>
 
+    <TextView
+        android:id="@+id/tvTdeeResult"
+        android:layout_width="389dp"
+        android:layout_height="71dp"
+        android:text=""
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-light"
+        android:padding="16dp"
+        android:textStyle="bold"/>
+
 </LinearLayout>

@@ -1,10 +1,10 @@
 package com.example.finalprojectandroid
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class TdeeCalculatorActivity : AppCompatActivity() {
@@ -19,6 +19,7 @@ class TdeeCalculatorActivity : AppCompatActivity() {
         val etAge = findViewById<EditText>(R.id.etAge)
         val spnGender = findViewById<Spinner>(R.id.spnGender)
         val spnActivity = findViewById<Spinner>(R.id.spnActivity)
+        val tvTdeeResult = findViewById<TextView>(R.id.tvTdeeResult)  // TextView to display the TDEE result
 
         btnCalculateTdee.setOnClickListener {
             val weight = etWeight.text.toString().toDoubleOrNull() ?: 0.0
@@ -27,17 +28,18 @@ class TdeeCalculatorActivity : AppCompatActivity() {
             val gender = spnGender.selectedItem.toString()
             val activityLevel = spnActivity.selectedItem.toString()
 
-            val bmr = calculateBMR(gender, weight, height, age)
-            val tdee = calculateTDEE(bmr, activityLevel)
-
-            val intent = Intent(this, DailyIntakeActivity::class.java)
-            intent.putExtra("tdee", tdee)
-            startActivity(intent)
+            if (weight > 0 && height > 0 && age > 0) {
+                val bmr = calculateBMR(gender, weight, height, age)
+                val tdee = calculateTDEE(bmr, activityLevel)
+                tvTdeeResult.text = String.format("Your TDEE is: %.2f kcal", tdee)
+            } else {
+                tvTdeeResult.text = "Please enter valid values for weight, height, and age."
+            }
         }
     }
 
-    private fun calculateBMR(gendr: String, weight: Double, height: Double, age: Int): Double {
-        return if (gendr == "Male") {
+    private fun calculateBMR(gender: String, weight: Double, height: Double, age: Int): Double {
+        return if (gender == "Male") {
             10 * weight + 6.25 * height - 5 * age + 5
         } else {
             10 * weight + 6.25 * height - 5 * age - 161
