@@ -22,7 +22,7 @@ class NotificationReceiver : BroadcastReceiver() {
             val channel = NotificationChannel(
                 "workout_channel",
                 "Workout Notifications",
-                NotificationManager.IMPORTANCE_HIGH
+                NotificationManager.IMPORTANCE_DEFAULT
             )
             notificationManager.createNotificationChannel(channel)
         }
