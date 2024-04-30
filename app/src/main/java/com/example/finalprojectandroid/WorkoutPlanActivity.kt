@@ -1,11 +1,12 @@
-package com.example.finalprojectandroid
-
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.finalprojectandroid.R
 
 class WorkoutPlanActivity : AppCompatActivity() {
 
@@ -18,16 +19,13 @@ class WorkoutPlanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout_plan)
 
-        // Initialize views
         textViewDate = findViewById(R.id.textViewDate)
         spinnerWorkoutType = findViewById(R.id.spinnerWorkoutType)
         btnSaveWorkout = findViewById(R.id.btnSaveWorkout)
 
-        // Retrieve selected date from intent extras
         selectedDate = intent.getStringExtra("selectedDate") ?: ""
         textViewDate.text = "Selected Date: $selectedDate"
 
-        // Set click listener for save button
         btnSaveWorkout.setOnClickListener {
             saveWorkout()
         }
@@ -41,10 +39,13 @@ class WorkoutPlanActivity : AppCompatActivity() {
             return
         }
 
-        // Save workout details to database or perform necessary actions
-        // Here you would store workoutType and selectedDate in the database
+        // Here you can save workoutType and selectedDate using SharedPreferences or other local storage
+        // For example:
+        val sharedPreferences = getSharedPreferences("WorkoutPreferences", MODE_PRIVATE)
+        sharedPreferences.edit().putString(selectedDate, workoutType).apply()
 
         Toast.makeText(this, "Workout saved successfully", Toast.LENGTH_SHORT).show()
-        finish() // Close activity after saving workout
+        setResult(Activity.RESULT_OK)
+        finish()
     }
 }
