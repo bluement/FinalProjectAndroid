@@ -1,4 +1,4 @@
-<!-- activity_bmi_calculator.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -9,12 +9,14 @@
         android:id="@+id/etWeight"
         android:layout_width="match_parent"
         android:layout_height="71dp"
+        android:inputType="numberDecimal"
         android:hint="Enter Weight (kg)" />
 
     <EditText
         android:id="@+id/etHeight"
         android:layout_width="match_parent"
         android:layout_height="98dp"
+        android:inputType="numberDecimal"
         android:hint="Enter Height (cm)" />
 
     <Button
@@ -23,5 +25,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Calculate BMI" />
+
+    <TextView
+        android:id="@+id/tvBmiResult"
+        android:layout_width="389dp"
+        android:layout_height="71dp"
+        android:text=""
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-light"
+        android:padding="16dp"
+        android:textStyle="bold"/>
 
 </LinearLayout>

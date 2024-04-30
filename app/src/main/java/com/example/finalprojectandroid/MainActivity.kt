@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.btnBmiCalculator).setOnClickListener {
-            startActivity(Intent(this, BmiCalculatorActivity::class.java))
+            startActivity(Intent(this, BmiCalculator::class.java))
         }
 
         findViewById<Button>(R.id.btnTdeeCalculator).setOnClickListener {
