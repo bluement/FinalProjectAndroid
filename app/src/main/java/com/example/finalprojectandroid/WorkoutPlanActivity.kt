@@ -13,7 +13,7 @@ class WorkoutPlanActivity : AppCompatActivity() {
     private lateinit var textViewDate: TextView
     private lateinit var spinnerWorkoutType: Spinner
     private lateinit var btnSaveWorkout: Button
-
+    private lateinit var dbHelper: WorkoutDatabaseHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout_plan)
@@ -22,6 +22,9 @@ class WorkoutPlanActivity : AppCompatActivity() {
         textViewDate = findViewById(R.id.textViewDate)
         spinnerWorkoutType = findViewById(R.id.spinnerWorkoutType)
         btnSaveWorkout = findViewById(R.id.btnSaveWorkout)
+
+        //Initializes the database helper
+        dbHelper = WorkoutDatabaseHelper(this)
 
         // Retrieve selected date from intent extras
         selectedDate = intent.getStringExtra("selectedDate") ?: ""
@@ -43,8 +46,13 @@ class WorkoutPlanActivity : AppCompatActivity() {
 
         // Save workout details to database or perform necessary actions
         // Here you would store workoutType and selectedDate in the database
-
-        Toast.makeText(this, "Workout saved successfully", Toast.LENGTH_SHORT).show()
-        finish() // Close activity after saving workout
+        // Save workout details to database
+        val rowId = dbHelper.insertWorkout(selectedDate, workoutType)
+        if (rowId == -1L) {
+            Toast.makeText(this, "Error saving workout", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Workout saved successfully", Toast.LENGTH_SHORT).show()
+            finish() // Close activity after saving workout
+        }
     }
 }
