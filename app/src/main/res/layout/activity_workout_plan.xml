@@ -12,10 +12,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="96dp"
-        android:text="Selected Date:" />
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="72dp"
+        android:text="Choose the date of the workout:" />
 
     <Spinner
         android:id="@+id/spinnerWorkoutType"
@@ -24,9 +24,9 @@
         android:layout_below="@id/textViewDate"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="58dp"
         android:entries="@array/workout_types" />
 
     <Button
@@ -40,5 +40,15 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="16dp"
         android:text="Save Workout" />
+
+    <Button
+        android:id="@+id/buttonChooseDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="169dp"
+        android:text="Choose date" />
 
 </RelativeLayout>

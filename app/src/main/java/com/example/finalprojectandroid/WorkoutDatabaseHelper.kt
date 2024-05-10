@@ -41,17 +41,40 @@ class WorkoutDatabaseHelper (context: Context) : SQLiteOpenHelper(context, DATAB
         return db.insert(TABLE_NAME, null, values)
     }
 
-    fun getAllWorkouts(): List<Pair<String, String>> {
-        val workouts = mutableListOf<Pair<String, String>>()
+    fun getAllWorkoutDates(): List<String> {
+        val dates = mutableListOf<String>()
         val db = readableDatabase
-        val cursor = db.query(TABLE_NAME, arrayOf(COLUMN_DATE, COLUMN_WORKOUT_TYPE), null, null, null, null, null)
-
+        val cursor = db.rawQuery("SELECT DISTINCT $COLUMN_DATE FROM $TABLE_NAME", null)
         while (cursor.moveToNext()) {
-            val date = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE))
-            val workoutType = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_WORKOUT_TYPE))
-            workouts.add(Pair(date, workoutType))
+            dates.add(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DATE)))
+        }
+        cursor.close()
+        return dates
+    }
+    fun getWorkoutsForDate(date: String): List<String> {
+        val workouts = mutableListOf<String>()
+        val db = readableDatabase
+        val cursor = db.query(
+            TABLE_NAME,
+            arrayOf(COLUMN_WORKOUT_TYPE), // Only fetch the workout type
+            "$COLUMN_DATE = ?",           // Filter results where the date column matches
+            arrayOf(date),                // The date to match
+            null,
+            null,
+            null
+        )
+        while (cursor.moveToNext()) {
+            workouts.add(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_WORKOUT_TYPE)))
         }
         cursor.close()
         return workouts
+    }
+    fun deleteWorkout(date: String, workoutType: String): Int {
+        val db = writableDatabase
+        return db.delete(
+            TABLE_NAME,
+            "$COLUMN_DATE = ? AND $COLUMN_WORKOUT_TYPE = ?",
+            arrayOf(date, workoutType)
+        )
     }
 }
